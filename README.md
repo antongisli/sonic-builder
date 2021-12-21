@@ -33,5 +33,7 @@ they modify `rules/config`.
 
 Now pray to the Gods above, and perhaps you will end up with a working docker image :).
 
+If you want to remove the multipass VM when you're done: `multipass delete --purge sonic-builder`
+
 Notes on using the docker images:
 ~/sonic-buildimage/platform/vs/README.vsdocker.md 
