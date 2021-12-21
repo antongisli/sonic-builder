@@ -23,6 +23,8 @@ write_files:
      #!/usr/bin/env bash
      cd ~ubuntu
      git clone https://github.com/Azure/sonic-buildimage.git
+     # uncomment below if you want to change the branch
+     # git checkout 202106
      sed -i 's/SONIC_CONFIG_BUILD_JOBS = 1/SONIC_CONFIG_BUILD_JOBS = 4/g' sonic-buildimage/rules/config
      sed -i 's/DEFAULT_PASSWORD = YourPaSsWoRd/DEFAULT_PASSWORD = admin/g' sonic-buildimage/rules/config
      sed -i 's/# SHUTDOWN_BGP_ON_START = y/SHUTDOWN_BGP_ON_START = n/g' sonic-buildimage/rules/config
