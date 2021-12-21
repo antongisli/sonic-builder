@@ -25,8 +25,9 @@ To use this with multipass, do this:
 Docker vs build scripts are made for you in home dir, one to build arm one x86. 
 Note that you may want to edit these to checkout a different version of sonic, since
 sometimes builds just don't work otherwise. By default, the scripts use the master branch.
-- `build-vs-arm-docker.sh`
-- `build-vs-docker.sh`
+Run them from inside the sonic-buildimage directory:
+- `cd sonic-buildimage; ../build-vs-arm-docker.sh`
+- `cd sonic-buildimage; ../build-vs-docker.sh`
 
 Now pray to the Gods above, and perhaps you will end up with a working docker image :).
 
