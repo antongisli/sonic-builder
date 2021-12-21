@@ -32,6 +32,7 @@ write_files:
    owner: root
    content: |
      #!/usr/bin/env bash
+     cd sonic-buildimage
      make init
      make configure PLATFORM=vs
      make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
@@ -40,6 +41,7 @@ write_files:
    owner: root
    content: |
      #!/usr/bin/env bash
+     cd sonic-buildimage
      make init
      make configure PLATFORM=vs PLATFORM_ARCH=arm64
      make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
