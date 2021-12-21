@@ -35,7 +35,7 @@ write_files:
      cd sonic-buildimage
      make init
      make configure PLATFORM=vs
-     make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
+     make SONIC_BUILD_JOBS=4 target/docker-sonic-vs.gz
  - path: /home/ubuntu/build-vs-arm-docker.sh
    permissions: 0744
    owner: root
@@ -44,7 +44,7 @@ write_files:
      cd sonic-buildimage
      make init
      make configure PLATFORM=vs PLATFORM_ARCH=arm64
-     make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
+     make SONIC_BUILD_JOBS=4 target/docker-sonic-vs.gz
 
 runcmd:
  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
