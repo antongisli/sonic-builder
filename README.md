@@ -1,20 +1,25 @@
 # sonic-builder
-Automating local sonic builds
+Automating local sonic builds. Motivation for this is to use a sane environment without messing up your local machine.
+
+Uses multipass to spawn Ubuntu VMs for building, and cloud-init to do all the tedious work of setting up the build env.
+
+At the end, you have freedom to try the build in different ways, but there are two example scripts provided.
 
 ## Requirements
-multipass installed
-A host with enough CPU/RAM/disk (16 GB RAM, 300GB free disk space)
+- multipass installed
+- A host with enough CPU/RAM/disk (16 GB RAM, 300GB free disk space)
+- Assumes you are using Ubuntu, probably won't work otherwise.
 
 ## Instructions
 
 Use the `sonic-cloud-init.yaml` file as a cloud-init script.
 It will setup docker and all the other tedious things needed to build sonic for you.
 You'll be left with a machine ready to build. 
-Assumes you are using Ubuntu, probably won't work otherwise.
 
-To use this with e.g. multipass, do this:
+
+To use this with multipass, do this:
 - `git clone https://github.com/antongisli/sonic-builder.git`
-- `multipass launch 20.04 -n sonic-builder -c8 -m10G -d300G --cloud-init sonic-cloud-init.yaml`
+- `multipass launch 20.04 -n sonic-builder -c8 -m10G -d300G --cloud-init sonic-builder/sonic-cloud-init.yaml`
 - Log in: `multipass shell sonic-builder`
 
 Docker vs build scripts are made for you in home dir, one to build arm one x86. 
