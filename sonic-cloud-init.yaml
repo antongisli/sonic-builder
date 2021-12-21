@@ -1,3 +1,12 @@
+package_upgrade: true
+packages:
+ - make
+ - python3-pip
+ - ca-certificates
+ - curl
+ - gnupg
+ - lsb-release
+
 write_files:
  - path: /tmp/docker.sh
    permissions: 0744
@@ -35,18 +44,11 @@ write_files:
      make configure PLATFORM=vs PLATFORM_ARCH=arm64
      make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
 
-package_upgrade: true
-packages:
- - ca-certificates
- - curl
- - gnupg
- - lsb-release
-
 runcmd:
  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
  - bash /tmp/docker.sh
- - sudo apt-get -y update
- - sudo apt-get -y install docker-ce docker-ce-cli containerd.io python3-pip make j2cli
+ - apt-get -y update
+ - apt-get -y install docker-ce docker-ce-cli containerd.io
  - pip install j2cli
  - git clone https://github.com/Azure/sonic-buildimage.git
  - modprobe overlay
