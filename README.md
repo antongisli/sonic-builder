@@ -8,7 +8,7 @@ At the end, you have freedom to try the build in different ways, but there are t
 ## Requirements
 - multipass installed
 - A host with enough CPU/RAM/disk (16 GB RAM, 300GB free disk space)
-- Assumes you are using Ubuntu, probably won't work otherwise.
+- Assumes you are using Ubuntu as a host, but has been tested and works on a windows host too.
 
 ## Instructions
 
