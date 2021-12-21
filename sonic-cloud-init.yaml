@@ -22,6 +22,24 @@ write_files:
      sed -i 's/DEFAULT_PASSWORD = YourPaSsWoRd/DEFAULT_PASSWORD = admin/g' sonic-buildimage/rules/config
      sed -i 's/# SHUTDOWN_BGP_ON_START = y/SHUTDOWN_BGP_ON_START = n/g' sonic-buildimage/rules/config
      chown -R ubuntu:ubuntu sonic-buildimage
+ - path: ~ubuntu/build-vs-docker.sh
+   permissions: 0744
+   owner: ubuntu
+   content: |
+     #!/usr/bin/env bash
+     make init
+     make configure PLATFORM=vs
+     make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
+ - path: ~ubuntu/build-vs-arm-docker.sh
+   permissions: 0744
+   owner: ubuntu
+   content: |
+     #!/usr/bin/env bash
+     make init
+     make configure PLATFORM=vs PLATFORM_ARCH=arm64
+     make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
+
+
 
      
 packages:
