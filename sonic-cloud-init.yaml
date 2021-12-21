@@ -1,7 +1,7 @@
 groups:
   - docker: [ubuntu]
 apt:
- - 
+ -
 write_files:
  - path: /tmp/docker.sh
    permissions: 0744
@@ -22,27 +22,25 @@ write_files:
      sed -i 's/DEFAULT_PASSWORD = YourPaSsWoRd/DEFAULT_PASSWORD = admin/g' sonic-buildimage/rules/config
      sed -i 's/# SHUTDOWN_BGP_ON_START = y/SHUTDOWN_BGP_ON_START = n/g' sonic-buildimage/rules/config
      chown -R ubuntu:ubuntu sonic-buildimage
- - path: ~ubuntu/build-vs-docker.sh
+ - path: /home/ubuntu/build-vs-docker.sh
    permissions: 0744
-   owner: ubuntu
+   owner: root
    content: |
      #!/usr/bin/env bash
      make init
      make configure PLATFORM=vs
      make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
- - path: ~ubuntu/build-vs-arm-docker.sh
+ - path: /home/ubuntu/build-vs-arm-docker.sh
    permissions: 0744
-   owner: ubuntu
+   owner: root
    content: |
      #!/usr/bin/env bash
      make init
      make configure PLATFORM=vs PLATFORM_ARCH=arm64
      make SONIC_BUILD_JOBS=4 target=target/docker-sonic-vs.gz
 
-
-
-     
 packages:
+ - make
  - ca-certificates
  - curl
  - gnupg
@@ -54,6 +52,10 @@ runcmd:
  - bash /tmp/docker.sh
  - sudo apt-get -y update
  - sudo apt-get -y install docker-ce docker-ce-cli containerd.io
+ - pip install j2cli
  - git clone https://github.com/Azure/sonic-buildimage.git
  - modprobe overlay
  - bash /tmp/prep.sh
+ - chown ubuntu:ubuntu /home/ubuntu/build-vs-arm-docker.sh
+ - chown ubuntu:ubuntu /home/ubuntu/build-vs-docker.sh
+ - usermod -a -G docker ubuntu
