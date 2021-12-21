@@ -21,10 +21,13 @@ To use this with multipass, do this:
 - `git clone https://github.com/antongisli/sonic-builder.git`
 - `multipass launch 20.04 -n sonic-builder -c8 -m10G -d300G --cloud-init sonic-builder/sonic-cloud-init.yaml`
 - Log in: `multipass shell sonic-builder`
+- From here, you have a ready and clean build environment.
 
-Docker vs build scripts are made for you in home dir, one to build arm one x86. 
+Docker sonic VS build scripts are made for you in home dir, one to build arm & one x86. 
 Note that you may want to edit these to checkout a different version of sonic, since
 sometimes builds just don't work otherwise. By default, the scripts use the master branch.
+To change the branch, add e.g. `git checkout 202106` **before** the sed lines because
+they modify `rules/config`.
 - `./build-vs-arm-docker.sh`
 - `./build-vs-docker.sh`
 
