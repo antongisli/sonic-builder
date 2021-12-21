@@ -38,4 +38,4 @@ runcmd:
  - sudo apt-get -y install docker-ce docker-ce-cli containerd.io
  - git clone https://github.com/Azure/sonic-buildimage.git
  - modprobe overlay
- - /tmp/prep.sh
+ - bash /tmp/prep.sh
