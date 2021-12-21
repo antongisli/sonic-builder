@@ -21,7 +21,7 @@ write_files:
      sed -i 's/SONIC_CONFIG_BUILD_JOBS = 1/SONIC_CONFIG_BUILD_JOBS = 4/g' sonic-buildimage/rules/config
      sed -i 's/DEFAULT_PASSWORD = YourPaSsWoRd/DEFAULT_PASSWORD = admin/g' sonic-buildimage/rules/config
      sed -i 's/# SHUTDOWN_BGP_ON_START = y/SHUTDOWN_BGP_ON_START = n/g' sonic-buildimage/rules/config
-     chown -R ubuntu sonic-buildimage
+     chown -R ubuntu:ubuntu sonic-buildimage
 
      
 packages:
