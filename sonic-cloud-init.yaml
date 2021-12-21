@@ -1,3 +1,5 @@
+groups:
+  - docker: [ubuntu]
 apt:
  - 
 write_files:
@@ -21,6 +23,5 @@ runcmd:
  - bash /tmp/docker.sh
  - sudo apt-get -y update
  - sudo apt-get -y install docker-ce docker-ce-cli containerd.io
- - sudo gpasswd -a ${USER} docker
  - git clone https://github.com/Azure/sonic-buildimage.git
  - modprobe overlay
