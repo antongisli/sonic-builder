@@ -22,6 +22,7 @@ To use this with multipass, do this:
 - `multipass launch 20.04 -n sonic-builder -c8 -m10G -d300G --cloud-init sonic-builder/sonic-cloud-init.yaml`
 - Log in: `multipass shell sonic-builder`
 - From here, you have a ready and clean build environment.
+- Note: change `-c` to match the CPU cores you have available. `-m` for memory, `-d` for disk space.
 
 Docker sonic VS build scripts are made for you in home dir, one to build arm & one x86. 
 Note that you may want to edit these to checkout a different version of sonic, since
